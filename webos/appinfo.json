@@ -1,0 +1,13 @@
+{
+  "id": "com.vionza.play.lg",
+  "version": "0.1.0",
+  "vendor": "Vionza Play",
+  "type": "web",
+  "main": "index.html",
+  "title": "Vionza Play",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "resolution": "1920x1080",
+  "disallowScrollingInContent": true,
+  "uiRevision": 2
+}

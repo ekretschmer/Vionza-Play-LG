@@ -1,0 +1,21 @@
+{
+  "name": "vionza-play-lg",
+  "productName": "Vionza Play",
+  "version": "0.1.0",
+  "description": "Vionza Play para TVs LG (webOS)",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "vendor": "node scripts/vendor.js",
+    "postinstall": "node scripts/vendor.js",
+    "build": "node scripts/build.js",
+    "package": "npm run build && ares-package dist/app --outdir dist",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "hls.js": "^1.5.17",
+    "mpegts.js": "^1.7.3",
+    "qrcode-generator": "^1.4.4"
+  },
+  "engines": { "node": ">=20" }
+}
