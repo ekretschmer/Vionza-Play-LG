@@ -1,0 +1,22 @@
+name: Gerar .ipk (LG webOS)
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+jobs:
+  ipk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install          # também copia hls.js / mpegts.js / qrcode para src/vendor
+      - run: npm test
+      - name: Compilar com a chave PÚBLICA (secret LICENSE_PUBLIC_KEY)
+        env:
+          VZ_LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
+        run: npm run build
+      - run: npm install -g @webos-tools/cli
+      - run: ares-package dist/app --outdir dist
+      - uses: actions/upload-artifact@v4
+        with: { name: vionza-play-lg-ipk, path: dist/*.ipk }
